@@ -22,4 +22,7 @@ export default createGlobalStyle`
         --color-white: #fff;
         --color-black: #000;
     }
+    .container {
+        padding: 0 40px;
+    }
 `

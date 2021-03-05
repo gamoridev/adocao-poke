@@ -9,12 +9,7 @@ interface Props {
 }
 
 const Description: React.FC<Props> = ({ children = '', icon, type }) => {
-	console.log(icon)
-	return (
-		<Container className={type}>
-			<span>{children}</span>
-		</Container>
-	)
+	return <Container className={type}>{children}</Container>
 }
 
 export default Description

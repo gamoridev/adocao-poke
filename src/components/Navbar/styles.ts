@@ -5,15 +5,15 @@ export const Header = styled.header`
 	background: var(--bg-color);
 	display: flex;
 	justify-content: space-between;
-	padding: 16px 32px;
+	padding: 16px 40px;
 	&.fire {
 		--bg-color: var(--color-fire);
-		--text-color: var(--color-black);
+		--text-color: var(--color-white);
 		--logo-color: var(--color-fire-secondary);
 	}
 	&.water {
 		--bg-color: var(--color-water);
-		--text-color: var(--color-black);
+		--text-color: var(--color-white);
 		--logo-color: var(--color-water-secondary);
 	}
 	&.shadow {

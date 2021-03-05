@@ -18,25 +18,25 @@ const TYPES = [
 	{
 		exact: true,
 		id: 'fire',
-		title: 'Pokémons de Fogo',
+		title: 'Pokémon de Fogo',
 		icon: AiFillFire,
 		description:
-			'Pokémons de fogo são ótimos para pessoas que gostam de calor! Aconselhável para pessoas que não moram em casas de madeira o.O',
+			'Os Pokémon de fogo são ótimos para pessoas que gostam de calor! Aconselhável para pessoas que não moram em casas de madeira o.O',
 		path: ['/', '/fogo'],
 		component: Fire
 	},
 	{
 		id: 'water',
-		title: 'Pokémons de Água',
+		title: 'Pokémon de Água',
 		icon: FaWater,
 		description:
-			'Pokémons do tipo água pra quem adora tomar banho. Espero que você tenha piscina.',
+			'Os Pokémon do tipo água pra quem adora tomar banho. Espero que você tenha piscina.',
 		path: '/agua',
 		component: Water
 	},
 	{
 		id: 'shadow',
-		title: 'Pokémons da Escuridão',
+		title: 'Pokémon da Escuridão',
 		icon: GiShadowFollower,
 		description:
 			'Ótimos companheiros para pessoas que não saem de casa ou que odeiam sol.',
@@ -76,9 +76,9 @@ export default function App() {
 		<Router history={history}>
 			<Navbar variant={type.id} title={type.title} />
 			<Description type={type.id} icon={type.icon}>
+				<type.icon />
 				{type.description}
 			</Description>
-			<type.icon style={{ fontSize: 50 }} />
 			<Switch>
 				{TYPES.map((item) => (
 					<RouteComponent

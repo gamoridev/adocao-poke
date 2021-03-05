@@ -3,24 +3,34 @@ import styled from 'styled-components'
 export const Container = styled.div`
 	display: flex;
 	justify-content: center;
-	margin: 40px 80px;
+	flex-direction: column;
+	align-items: center;
+	margin: 10px 40px 40px;
 	padding: 20px;
 	border-radius: 4px;
-	> span {
-		font-size: 24px;
-		text-align: center;
-	}
+	font-size: 24px;
+	text-align: center;
 
 	&.fire {
-		background-color: var(--color-fire);
-		color: var(--color-fire-secondary);
+		--bg-color: var(--color-fire);
+		--text-color: var(--color-fire-secondary);
 	}
 	&.water {
-		background-color: var(--color-water);
-		color: var(--color-water-secondary);
+		--bg-color: var(--color-water);
+		--text-color: var(--color-water-secondary);
 	}
 	&.shadow {
-		background-color: var(--color-shadow);
-		color: var(--color-shadow-secondary);
+		--bg-color: var(--color-shadow);
+		--text-color: var(--color-shadow-secondary);
+	}
+	background-color: var(--bg-color);
+	color: var(--text-color);
+
+	svg {
+		font-size: 60px;
+		padding: 10px;
+		background-color: var(--text-color);
+		color: var(--bg-color);
+		border-radius: 50%;
 	}
 `
