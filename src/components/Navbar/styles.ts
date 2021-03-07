@@ -70,3 +70,14 @@ export const Wrap = styled.div`
 		color: var(--logo-color);
 	}
 `
+
+export const CartLength = styled.span`
+	position: relative;
+	top: -35px;
+	left: -20px;
+	background-color: var(--color-white);
+	color: var(--bg-color);
+	font-weight: bold;
+	padding: 2px 10px;
+	border-radius: 50%;
+`

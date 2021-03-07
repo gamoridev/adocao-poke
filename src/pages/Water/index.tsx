@@ -5,6 +5,7 @@ import { getPokemonByType } from '../../_utils/request'
 
 interface Props {
 	idType: number
+	variant: string
 }
 
 interface Row {
@@ -13,7 +14,7 @@ interface Row {
 	}
 }
 
-const Water: React.FC<Props> = ({ idType }) => {
+const Water: React.FC<Props> = ({ idType, variant }) => {
 	const [loading, setLoading] = useState(false)
 	const [pokemonRows, setPokemonRows] = useState([])
 	useEffect(() => {
@@ -32,7 +33,13 @@ const Water: React.FC<Props> = ({ idType }) => {
 					pokemonRows.map((row, key) => {
 						const { pokemon }: Row = row
 						const { url } = pokemon
-						return <PokemonCard key={`water_${key}`} url={url} />
+						return (
+							<PokemonCard
+								variant={variant}
+								key={`water_${key}`}
+								url={url}
+							/>
+						)
 					})}
 			</PokemonRow>
 		</div>
