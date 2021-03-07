@@ -122,12 +122,16 @@ export default function App() {
 					))}
 					<Redirect from="*" to="/" />
 				</Switch>
-				<Cart cart={cart} variant={type.id} checkout={checkout} />
+				{cart.length && (
+					<Cart cart={cart} variant={type.id} checkout={checkout} />
+				)}
 			</Store>
 			<Modal isOpen={openModal} toggle={setOpenModal}>
-				<h1>test</h1>
-				<p>Other text that describes what is happening</p>
-				<button onClick={() => setOpenModal(false)}>toggle</button>
+				<h1>Obrigado!</h1>
+				<p>
+					Em breve entraremos em contato para a entrega dos Pokemón!
+				</p>
+				<button onClick={() => setOpenModal(false)}>Fechar</button>
 			</Modal>
 			<GlobalStyles />
 		</Router>
