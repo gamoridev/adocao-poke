@@ -60,26 +60,36 @@ function RouteComponent({ component: Component, ...rest }) {
 	)
 }
 
+const getType = (pathname) => {
+	return TYPES.find((type) => {
+		if (Array.isArray(type.path)) {
+			return type.path.includes(pathname)
+		} else {
+			return type.path === pathname
+		}
+	})
+}
+
 export default function App() {
 	const [type, setType] = useState(TYPES[0])
 	const [openModal, setOpenModal] = useState(false)
 	const [cart, setCart] = useState([])
 
 	useEffect(() => {
-		history.listen(({ pathname }) => {
-			const getType = TYPES.find((type) => {
-				if (Array.isArray(type.path)) {
-					return type.path.includes(pathname)
-				} else {
-					return type.path === pathname
-				}
-			})
-			if (getType) {
-				setType(getType)
+		const handleType = (path) => {
+			if (getType(path)) {
+				setType(getType(path))
 			} else {
 				setType(TYPES[0])
 			}
+		}
+
+		history.listen(({ pathname }) => {
+			handleType(getType(pathname))
 		})
+		const { location } = history
+		const { pathname } = location
+		handleType(pathname)
 	}, [])
 
 	const updateCart = () => {
