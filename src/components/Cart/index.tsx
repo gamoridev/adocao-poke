@@ -1,11 +1,13 @@
 import React from 'react'
 import { sumTotal } from '../../_utils/calculateCart'
+import { removePokemon } from '../../_utils/storage'
 
-import { Container, List, Item, Total } from './styles'
+import { Container, List, Item, Total, Remove } from './styles'
 
-interface Cart {
+interface Props {
 	cart: Pokemon[]
 	checkout: React.MouseEventHandler<HTMLButtonElement>
+	handleRemove?: React.MouseEventHandler<HTMLButtonElement>
 }
 
 interface Pokemon {
@@ -14,7 +16,11 @@ interface Pokemon {
 	weight: number
 }
 
-const Cart: React.FC<Cart> = ({ cart, checkout }) => {
+const Cart: React.FC<Props> = ({ cart, checkout }) => {
+	const handleRemove = (id: number) => {
+		removePokemon(id)
+	}
+
 	return (
 		<Container show={cart.length > 0}>
 			<div>
@@ -25,7 +31,14 @@ const Cart: React.FC<Cart> = ({ cart, checkout }) => {
 							return (
 								<Item key={pokemon.id}>
 									<div>
-										<span>X </span>
+										<Remove
+											title="Remover da Pokebola"
+											onClick={() =>
+												handleRemove(pokemon.id)
+											}
+										>
+											X{' '}
+										</Remove>
 										{pokemon.name}
 									</div>
 									<div>

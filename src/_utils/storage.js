@@ -12,7 +12,7 @@ export const addPokemon = (data) => {
 export const removePokemon = (id) => {
 	let cart = JSON.parse(localStorage.getItem('cart')) || []
 
-	cart = cart.find((item) => item.id !== id)
+	cart = cart.filter((item) => item.id !== id)
 
 	localStorage.setItem('cart', JSON.stringify(cart))
 	window.dispatchEvent(new Event('storage'))

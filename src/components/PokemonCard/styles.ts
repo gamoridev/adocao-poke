@@ -6,6 +6,7 @@ interface CardProps {
 
 export const Card = styled.li<CardProps>`
 	height: 250px;
+	max-width: 300px;
 	${({ variant }) => `
 		border: 1px solid var(--color-${variant});
 	`}

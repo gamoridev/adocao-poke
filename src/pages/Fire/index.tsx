@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react'
+
+import { getPokemonByType } from '../../_utils/request'
+import { filteredPokemon } from '../../_utils/searchPokemon'
+
 import PokemonCard from '../../components/PokemonCard'
 import PokemonRow from '../../components/PokemonRow'
-import { getPokemonByType } from '../../_utils/request'
+import Search from '../../components/Search'
 
 interface Props {
 	idType: number
@@ -11,16 +15,29 @@ interface Props {
 interface Row {
 	pokemon: {
 		url: string
+		name: string
 	}
 }
 
 const Fire: React.FC<Props> = ({ idType, variant }) => {
 	const [loading, setLoading] = useState(false)
 	const [pokemonRows, setPokemonRows] = useState([])
+	const [filtered, setFiltered] = useState([])
+
+	const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		const { value } = e.target
+		if (value) {
+			const filtered = filteredPokemon(pokemonRows, value)
+			setFiltered(filtered)
+		} else {
+			setFiltered(pokemonRows)
+		}
+	}
 	useEffect(() => {
 		setLoading(true)
 		getPokemonByType(idType, 10).then((response) => {
 			setPokemonRows(response.pokemon)
+			setFiltered(response.pokemon)
 			setLoading(false)
 		})
 	}, [idType])
@@ -28,9 +45,10 @@ const Fire: React.FC<Props> = ({ idType, variant }) => {
 	return (
 		<div className="container">
 			{loading && <span>Carregando...</span>}
+			<Search onChange={onChange} />
 			<PokemonRow>
-				{pokemonRows &&
-					pokemonRows.map((row, key) => {
+				{filtered &&
+					filtered.map((row, key) => {
 						const { pokemon }: Row = row
 						const { url } = pokemon
 						return (

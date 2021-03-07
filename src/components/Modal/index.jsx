@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { ModalBackground, Modal } from './styles'
 
-function useOnClickOutside(ref, handler) {
+const useOnClickOutside = (ref, handler) => {
 	useEffect(() => {
 		const listener = (event) => {
 			if (!ref.current || ref.current.contains(event.target)) {
@@ -17,10 +17,10 @@ function useOnClickOutside(ref, handler) {
 			document.removeEventListener('mousedown', listener)
 			document.removeEventListener('touchstart', listener)
 		}
-	}, [])
+	}, [handler, ref])
 }
 
-export default function ({ isOpen, toggle, children }) {
+function ModalComponent({ isOpen, toggle, children }) {
 	const ref = useRef()
 	useOnClickOutside(ref, () => toggle(false))
 	return (
@@ -29,3 +29,5 @@ export default function ({ isOpen, toggle, children }) {
 		</ModalBackground>
 	)
 }
+
+export default ModalComponent

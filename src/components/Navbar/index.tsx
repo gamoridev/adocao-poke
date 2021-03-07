@@ -3,7 +3,6 @@ import { CgPokemon } from 'react-icons/cg'
 import { AiFillFire } from 'react-icons/ai'
 import { FaWater } from 'react-icons/fa'
 import { GiShadowFollower } from 'react-icons/gi'
-import Search from '../Search'
 import { Header, Wrap, Choose, Options, Option, CartLength } from './styles'
 
 interface Props {
@@ -36,7 +35,6 @@ const Navbar: React.FC<Props> = ({ variant, title, cart }) => {
 					<CgPokemon />
 					{cart.length > 0 && <CartLength>{cart.length}</CartLength>}
 				</div>
-				<Search />
 			</Wrap>
 		</Header>
 	)

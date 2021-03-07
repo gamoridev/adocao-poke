@@ -7,6 +7,7 @@ interface ContainerProps {
 export const Container = styled.div<ContainerProps>`
 	position: relative;
 	margin-right: 40px;
+	margin-top: 74px;
 	transition: all 0.25s linear;
 	> div {
 		border: 1px solid var(--color-black);
@@ -59,4 +60,11 @@ export const Total = styled.h3`
 	margin-bottom: 10px;
 	display: flex;
 	justify-content: space-between;
+`
+
+export const Remove = styled.span`
+	cursor: pointer;
+	:hover {
+		font-weight: bold;
+	}
 `

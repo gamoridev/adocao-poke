@@ -76,6 +76,18 @@ export default function App() {
 	const [cart, setCart] = useState([])
 
 	useEffect(() => {
+		// Listening to url changes
+		history.listen(({ pathname }) => {
+			if (getType(pathname)) {
+				setType(getType(pathname))
+			} else {
+				setType(TYPES[0])
+			}
+		})
+
+		// First component load
+		const { location } = history
+		const { pathname } = location
 		const handleType = (path) => {
 			if (getType(path)) {
 				setType(getType(path))
@@ -83,12 +95,6 @@ export default function App() {
 				setType(TYPES[0])
 			}
 		}
-
-		history.listen(({ pathname }) => {
-			handleType(getType(pathname))
-		})
-		const { location } = history
-		const { pathname } = location
 		handleType(pathname)
 	}, [])
 
@@ -111,6 +117,7 @@ export default function App() {
 		}
 		updateCart()
 	}, [])
+
 	return (
 		<Router history={history}>
 			<Navbar variant={type.id} title={type.title} cart={cart} />
@@ -132,7 +139,7 @@ export default function App() {
 					))}
 					<Redirect from="*" to="/" />
 				</Switch>
-				{cart.length && (
+				{cart.length > 0 && (
 					<Cart cart={cart} variant={type.id} checkout={checkout} />
 				)}
 			</Store>
