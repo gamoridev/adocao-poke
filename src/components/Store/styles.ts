@@ -10,4 +10,8 @@ export const Container = styled.div<ContainerProps>`
 	&.selected {
 		grid-template-columns: auto 400px;
 	}
+	@media screen and (max-width: 1024px) {
+		display: flex;
+		flex-direction: column-reverse;
+	}
 `

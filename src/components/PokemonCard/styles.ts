@@ -10,6 +10,9 @@ export const Card = styled.li<CardProps>`
 	${({ variant }) => `
 		border: 1px solid var(--color-${variant});
 	`}
+	@media screen and (max-width: 640px) {
+		max-width: 100%;
+	}
 	display: flex;
 	justify-content: center;
 	flex-direction: column;

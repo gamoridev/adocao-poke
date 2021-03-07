@@ -9,6 +9,9 @@ export const Container = styled.div<ContainerProps>`
 	margin-right: 40px;
 	margin-top: 74px;
 	transition: all 0.25s linear;
+	@media screen and (max-width: 1024px) {
+		margin-left: 40px;
+	}
 	> div {
 		border: 1px solid var(--color-black);
 		padding: 0 10px;
