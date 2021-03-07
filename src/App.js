@@ -18,28 +18,31 @@ const TYPES = [
 	{
 		exact: true,
 		id: 'fire',
+		idType: 10,
 		title: 'Pokémon de Fogo',
 		icon: AiFillFire,
 		description:
-			'Os Pokémon de fogo são ótimos para pessoas que gostam de calor! Aconselhável para pessoas que não moram em casas de madeira o.O',
+			'Os Pokémon de fogo são ótimos para pessoas que gostam de calor! Aconselhável para pessoas que não moram em casas de madeira ヽ(◉◡◔)ﾉ',
 		path: ['/', '/fogo'],
 		component: Fire
 	},
 	{
 		id: 'water',
 		title: 'Pokémon de Água',
+		idType: 11,
 		icon: FaWater,
 		description:
-			'Os Pokémon do tipo água pra quem adora tomar banho. Espero que você tenha piscina.',
+			'Os Pokémon aquáticos pra quem adora tomar banho. Espero que você tenha uma piscina ¯\\_(ツ)_/¯',
 		path: '/agua',
 		component: Water
 	},
 	{
 		id: 'shadow',
 		title: 'Pokémon da Escuridão',
+		idType: 17,
 		icon: GiShadowFollower,
 		description:
-			'Ótimos companheiros para pessoas que não saem de casa ou que odeiam sol.',
+			'Ótimos companheiros para pessoas que não saem de casa ou que odeiam sol (ง •̀_•́)ง',
 		path: '/sombra',
 		component: Shadow
 	}
